@@ -1,0 +1,6 @@
+# Readinglist
+a dirt simple website for making a reading list of links without borking up the browser bookmark section
+
+This is just a simple website to work on javascript skills.  Most of the professional development I have done is in C# and as a consequence, javascript and JQuery in particular has only been used for flourishes.  This website is done using javascript, bootstrap, JQuery and Ajax calls.  It forced me to learn PHP and along the way there were numerous issues.  The first is that there are 2 versions and calls are deprecated between them.  Second, there is a lot of bad information regarding how to access MySQL databases.  After quite a few dead ends, I came to use PDO for my database work as it is the most consistent and is object orientated.  That brings me to the third issue.  After reading the PHP documentation, it turns out PHP is object orientated.  Once that was established, development went rapidly and easily.  The overall lesson is - read the documentation first.  I know it is as dry as cracker juice, but so much better in the long run.  This took me a day or two to do, once those hurdles were overcome.
+
+I would note my inexperience with PHP and security, and use at your own risk.  While I use prepared statements to minimize issues with SQL injection, there are other possible situations that may 'break' an insert or delete.
