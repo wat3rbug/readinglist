@@ -23,19 +23,20 @@ function buildCategoryCards() {
                 success: function(listings) {
                     for( i = 0; i < categories.length; i++) {
                         var cat = categories[i].category;
+                        var no_space = cat.replace(/ /g, "_");
                         var listByCat = listings.filter((listing) => listing.category == cat);
                         if (listByCat.length > 0) {
-                            var card = '<div class="card"><div class="card-header">';
-                            card += cat + '</div><div class="card-body"></div></div><p></p>';
-                            
+                            var card = '<div class="card"><div class="card-header"><a name="' + no_space + '">';
+                            card += cat + '</a></div><div class="card-body">';                    
                             var line = '<ul class="list-group list-group-flush">';
                             for( j = 0; j < listByCat.length; j++) {
-                                line += '<li class="list-groupitem"><button type="button" class="btn btn-link" onclick="removeList(';
-                                line += listByCat[j]['id'] + ')"><span class="glyphicon glyphicon-remove"></span></button>&nbsp;';
-                                line += '<a href="' + listByCat[j]['link'] + '" target="_blank">' + listByCat[j]['title'] + '</a></li>';
+                                var listing = listByCat[j];
+                                line += '<li class="list-group-item"><button type="button" class="btn btn-link" onclick="removeList(';
+                                line += listing['id'] + ')"><span class="glyphicon glyphicon-remove"></span></button>&nbsp;';
+                                line += '<a href="' + listing['link'] + '" target="_blank">' + listing['title'] + '</a></li>';
                             }
-                            line += '</ul></div></div>';
-                            card += line;
+                            line += '</ul>';
+                            card += line + '</div></div><div class="row">&nbsp;</div>';
                             $('.listingdiv').append(card);
                         }
                     }
