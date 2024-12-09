@@ -25,7 +25,8 @@ class Listing
 	}
 	
 	function addListing($title, $link, $category) {
-		$statement = $this->conn->prepare("INSERT INTO readinglist (title, link, category) VALUES (?, ?, ?)");
+		$sql = "INSERT INTO readinglist (title, link, category) VALUES (?, ?, ?)";
+		$statement = $this->conn->prepare($sql);
 		$statement->bindParam(1, $title);
 		$statement->bindParam(2, $link);
 		$statement->bindParam(3, $category);

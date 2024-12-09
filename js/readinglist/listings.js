@@ -13,6 +13,7 @@
 $(document).ready(function() {
 
     $('#addListingBtn').on('click', function() {
+        cleanNewListingModal();
         $('#addListing').modal('show');
     });
 
@@ -20,6 +21,9 @@ $(document).ready(function() {
         $('#addListing').modal('hide');
     });
 
+    $('.createNewListing').on('click', function() {
+        addNewListing();
+    });
     buildCategoryCards();
 });
 
@@ -79,4 +83,30 @@ function removeList(id) {
             buildCategoryCards();
         }
     });
+}
+
+function addNewListing() {
+    var cat = $('#catSelector').val();
+    var title =$('#title').val();
+    var link = $('#link').val();
+    $.ajax({
+        url: "repos/addListing.php",
+        type: "post",
+        data: {
+            "cat": cat,
+            "title": title,
+            "link": link
+        },
+        success: function(results) {
+            cleanNewListingModal();
+            $('#addListing').modal('hide');
+            buildCategoryCards();
+        }
+    })
+}
+
+function cleanNewListingModal() {
+    $('#catSelector').val('');
+    $('#title').val('');
+    $('#link').val('');
 }
