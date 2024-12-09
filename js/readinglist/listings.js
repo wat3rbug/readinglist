@@ -4,7 +4,7 @@
  * understanding.
  * 
  * Lessons learned: JQuery has some calls that work with classes but not ids.  I know, it's a gotcha and it got
- * me, which is why Ive written it down.  I shoudl learn more about the diffferent calls so that I don't do
+ * me, which is why Ive written it down.  I should learn more about the diffferent calls so that I don't do
  * as much text manipulation directly.
  **/  
 
@@ -24,6 +24,7 @@ $(document).ready(function() {
     $('.createNewListing').on('click', function() {
         addNewListing();
     });
+
     buildCategoryCards();
 });
 
@@ -72,6 +73,17 @@ function buildCategoryCards() {
     });
 }
 
+/**
+ * This function takes the id of the listing and removes
+ * the listing from the database.  Becauses the readinglist
+ * wasnt meant to be a big deal, there is no 'soft' delete
+ * for links.  If this function is used, the listing is gone
+ *  and no undelete is possible.  I did this application 
+ * over a few hours and it is meant as a 'jog the memory'
+ * aaplication. 
+ * @param id the listing record id. 
+ */
+
 function removeList(id) {
     $.ajax({
         url: "repos/removeListing.php",
@@ -84,6 +96,15 @@ function removeList(id) {
         }
     });
 }
+
+/**
+ * This function takes the input from the add listing
+ * modal and creates a bew listing based on the category
+ * passed.  Done as a quick and dirty method, since the
+ * application is meant as a memory jogger and nothing
+ * high profile as far as fault tolerance is built into
+ * it.
+ */
 
 function addNewListing() {
     var cat = $('#catSelector').val();
@@ -105,6 +126,10 @@ function addNewListing() {
     })
 }
 
+/**
+ * This function is meant to clear the contents of the
+ * new listing modal.
+ */
 function cleanNewListingModal() {
     $('#catSelector').val('');
     $('#title').val('');

@@ -11,9 +11,9 @@ $(document).ready(function() {
 		$('#editCategory').modal('show');
 	});
 
-	// $('#addCategoryBtn').on('click', function() {
-	// 	$('.addCategory').modal('show');
-	// });
+	$('#addCategoryBtn').on('click', function() {
+		$('.addCategory').modal('show');
+	});
 
 	$('#closeAddCat').on('click', function() {
 		buildCategories();
