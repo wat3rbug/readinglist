@@ -11,13 +11,13 @@ $(document).ready(function() {
 		$('#editCategory').modal('show');
 	});
 
-	$('#addCategoryBtn').on('click', function() {
-		$('#addCategoryBtn').modal('show');
-	});
+	// $('#addCategoryBtn').on('click', function() {
+	// 	$('.addCategory').modal('show');
+	// });
 
 	$('#closeAddCat').on('click', function() {
 		buildCategories();
-		$('#addCategory').modal('hide');
+		$('.addCategory').modal('hide');
 	});
 
 	$('#closeEditCat').on('click', function() {
@@ -38,8 +38,9 @@ $(document).ready(function() {
 
 function buildCategoryLinkBtn(category) {
 	var no_space = category.category.replace(/ /g, "_");
-	var cat = '<button type="button" class="btn btn-outline-primary" onclick="move(' + no_space;
-	cat += ');">' + category.category + '</button>';
+	var cat = '<a href="#' + no_space + '">';
+	cat += '<button type="button" class="btn btn-outline-primary">';
+	cat += category.category + '</button></a&nbsp;';
 	return cat;
 }
 
@@ -52,16 +53,6 @@ function buildCategoryLinkBtn(category) {
 function buildCategoryDropDown(category) {
 	var cat = "<option value='" + category['id'] + "'>" + category['category'] + "</option>";
 	return cat;
-}
-
-/**
- * This is dumb.  Since I'm using a button I made a method to redirect to the location, which is
- * EXACTLY what an anchor tag does.
- * @param cat is the text which represents the location.
- */
-
-function move(cat) {
-	window.location.href="#" + cat;
 }
 
 /**
