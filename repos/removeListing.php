@@ -1,6 +1,10 @@
 <?php
-require "Readinglist.php";
-$db = new Readinglist();
+require "Tables/Listing.php";
 $id =$_POST['id'];
-$db->removeListing($id);
+
+if (isset($id)) {
+    $db = new Listing();
+    $db->removeListing($id);
+}
+
 ?>

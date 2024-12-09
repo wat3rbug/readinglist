@@ -1,3 +1,15 @@
+/* This file handles all of the major components of the readinglist table or as noted here, the listing table.
+ * All of the Ajax calls for that table, are in this file.  The categories section stuff, unless integrated,
+ * are located in the categories.js file.  I tried to separate as much as I could for ease of reading and 
+ * understanding.
+ * 
+ * Lessons learned: JQuery has some calls that work with classes but not ids.  I know, it's a gotcha and it got
+ * me, which is why Ive written it down.  I shoudl learn more about the diffferent calls so that I don't do
+ * as much text manipulation directly.
+ **/  
+
+//Overall scheduler stuff is here.
+
 $(document).ready(function() {
 
     $('#addListingBtn').on('click', function() {
@@ -10,6 +22,16 @@ $(document).ready(function() {
 
     buildCategoryCards();
 });
+
+// support functions
+
+/*
+ * This function retrieves the categories and the listings together in order
+ * to build the 'cards' used on the page.  The categories are used in the headers
+ * and then for filtration of the listings for each card.  Its a fairly simple
+ * function, but it very 'texty' for my tastes.  I was working to get it done 
+ * quickly, not beautifully.
+ **/
 
 function buildCategoryCards() {
     $.ajax({
@@ -41,8 +63,20 @@ function buildCategoryCards() {
                         }
                     }
                 }
-            });
-            
+            }); 
+        }
+    });
+}
+
+function removeList(id) {
+    $.ajax({
+        url: "repos/removeListing.php",
+        type: "post",
+        data: {
+            "id": id
+        },
+        success: function(results) {
+            buildCategoryCards();
         }
     });
 }
