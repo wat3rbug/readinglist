@@ -12,12 +12,12 @@ $(document).ready(function() {
 	});
 
 	$('#addCategoryBtn').on('click', function() {
-		$('.addCategory').modal('show');
+		$('#addCategory').modal('show');
 	});
 
 	$('#closeAddCat').on('click', function() {
 		buildCategories();
-		$('.addCategory').modal('hide');
+		$('#addCategory').modal('hide');
 	});
 
 	$('#closeEditCat').on('click', function() {
