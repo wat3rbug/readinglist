@@ -1,0 +1,3 @@
+Things to do
+1.  Issue with not all of the readinglist is being displayed at the moment.  PHP gives all listings but the javascript doesn't.
+2. Make the various panels for categories, collapsible.
