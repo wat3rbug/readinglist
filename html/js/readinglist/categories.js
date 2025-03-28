@@ -77,9 +77,11 @@ function buildCategories() {
 				$('#catEditSelector').empty();
 				$('#quicklinks').empty();
 				for (i = 0; i < results.length; i++) {
-					$('#quicklinks').append(" " + buildCategoryLinkBtn(results[i]));
-					$('#catSelector').append(buildCategoryDropDown(results[i]));
-					$('#catEditSelector').append(buildCategoryDropDown(results[i]));
+					if (results[i].category != "none" && results[i].category != null) {
+						$('#quicklinks').append(" " + buildCategoryLinkBtn(results[i]));
+						$('#catSelector').append(buildCategoryDropDown(results[i]));
+						$('#catEditSelector').append(buildCategoryDropDown(results[i]));
+					}
 				}
 			}
 		}
